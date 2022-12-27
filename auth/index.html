@@ -14,7 +14,18 @@
     <body>
         <p>Authorization page</p>
         <script>
-            FB.login(console.log);
+            FB.getLoginStatus(function(response) {
+                if(response.error){
+                    throw response.error.message;
+                }
+                if(response.status != "connected" || !response.authResponse){
+                    console.log("[Login Status Check] Logging in");
+                    FB.login();
+                    return;
+                }
+                localStorage.setItem("jango_token", response.authResponse.accessToken);
+                console.log("[Login Status Check] Already logged in");
+            })
         </script>
     </body>
 </html>
