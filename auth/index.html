@@ -2,9 +2,12 @@
 <html>
     <head>
         <script src="https://connect.facebook.net/en_US/sdk.js"></script>
+        <script src="https://kingjango13.github.io/JangoMetaTest/script.js"></script>
         <script>
+            localStorage.setItem("ig_app_id","943075379999868");
+            localStorage.setItem("fb_app_id","680621813586567");
             FB.init({
-                appId: "680621813586567",
+                appId: localStorage.fb_app_id,
                 status: true,
                 xfbml: true,
                 version: "v2.7"
