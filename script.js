@@ -6,7 +6,7 @@ async function getShortToken(authCode){
             code: authCode,
             grant_type: "authorization_code",
             redirect_uri: "https://kingjango13.github.io/JangoMetaTest/auth/"
-        });
+        }),
         method: "POST"
     });
     var data = await res.json();
