@@ -12,6 +12,20 @@
                 xfbml: true,
                 version: "v2.7"
             });
+            function instaLogin(){
+                var code = new URLSearchParams(location.search).get("code");
+                if(!code){
+                    if(parseInt(localStorage.ig_token_expiration) > Date.now())return 0;
+                    location = "https://www.instagram.com/oauth/authorize?client_id=943075379999868&redirect_uri=https://kingjango13.github.io/JangoMetaTest/auth&scope=user_profile,user_media&response_type=code";
+                    return -1;
+                }
+                getShortToken(code).then(getLongToken).then(x => console.log(`Your token has been updated and expires on
+${new Date(parseInt(localStorage.ig_token_expiration)).toString()}
+new token:
+${localStorage.jango_ig_token}
+    
+`));
+            }
         </script>
     </head>
     <body>
